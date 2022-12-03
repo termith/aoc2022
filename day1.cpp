@@ -11,7 +11,8 @@ int part_one() {
     int max_sum = 0;
     int cur_sum = 0;
     std::ifstream f("../input/day1.txt");
-    for (std::string line; std::getline(f, line);) {
+    std::string line;
+    while (std::getline(f, line)) {
         if (line.empty()) {
             check_sum(cur_sum, max_sum);
         } else {

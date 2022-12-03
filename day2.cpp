@@ -1,18 +1,14 @@
-#include <map>
 #include <fstream>
 #include <iostream>
-
-std::map<char, int> choice_scores = {
-        {'X', 1}, {'Y', 2}, {'Z', 3}
-};
 
 int part_one() {
     int score = 0;
     std::ifstream f("../input/day2.txt");
-    for (std::string line; std::getline(f, line);) {
+    std::string line;
+    while (std::getline(f, line)) {
         char op = line[0];
         char yours = line[2];
-        score += choice_scores[yours];
+        score += (yours - 'W');
         switch (op) {
             case 'A':
                 score += yours == 'Y' ? 6 : yours == 'X' ? 3 : 0;
@@ -22,6 +18,8 @@ int part_one() {
                 break;
             case 'C':
                 score += yours == 'X' ? 6 : yours == 'Z' ? 3 : 0;
+                break;
+            default:
                 break;
         }
     }
@@ -45,6 +43,8 @@ int part_two() {
             case 'Z':
                 score += 6;
                 score += op == 'A' ? 2 : op == 'B' ? 3 : 1;
+                break;
+            default:
                 break;
         }
     }
